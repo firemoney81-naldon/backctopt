@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>보험 클릭을 강탈하는 순간들 — 자동차보험 핵심 링크 컬렉션</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans KR',Arial,sans-serif;margin:24px;background:#f7f7f8;color:#111}
+  header{max-width:980px;margin:0 auto 24px}
+  h1{font-size:28px;margin:0 0 8px}
+  p.lead{margin:0 0 16px;color:#444}
+  #container{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:14px}
+  .card{background:#fff;border-radius:12px;padding:16px;border:1px solid #e3e3e6;box-shadow:0 4px 18px rgba(15,15,20,0.03)}
+  .title{font-weight:800;font-size:18px;margin:0 0 8px;color:#0b3a66}
+  .desc a{display:inline-block;text-decoration:none;color:#0b3a66;font-weight:600}
+  .desc a:hover{text-decoration:underline}
+  .meta{margin-top:10px;font-size:12px;color:#666}
+  footer{max-width:980px;margin:24px auto;color:#666;font-size:13px}
+  .notice{color:#9a3b00;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <h1>보험 클릭을 강탈하는 순간들</h1>
+  <p class="lead">모든 관련 페이지를 한곳에 모았습니다. 항목은 페이지 로드 시 무작위로 정렬됩니다. 설명문 전체를 클릭하면 해당 사이트가 새 탭으로 열립니다.</p>
+</header>
+
+<main id="container"></main>
+
+<footer>
+  <div>원본 목록 출처: :contentReference[oaicite:1]{index=1}</div>
+  <div style="margin-top:8px" class="notice">설명문 자체가 링크입니다. 클릭 시 새 탭으로 이동합니다.</div>
+</footer>
+
+<script>
+/* 원본 목록(업로드하신 텍스트 그대로). 각 줄은 "키워드<whitespace>URL" 형태입니다. */
+const rawData = `자동차보험료계산\t\thttp://bohumpromotiona.cafe24.com/
+자동차보험할증기준\thttp://bohumpromotionb.cafe24.com/
+자동차보험료1년\t\thttp://bohumpromotionc.cafe24.com/
+자동차보험비교견적\thttp://bohumpromotiond.cafe24.com/
+20대자동차보험료\t\thttp://bohumpromotione.cafe24.com/
+자동차보험견적\t\thttp://bohumpromotionf.cafe24.com/
+자동차보험추천\t\thttp://bohumpromotiong.cafe24.com/
+자동차보험나이\t\thttp://bohumpromotionh.cafe24.com/
+다이렉트자동차보험료\thttp://bohumpromotioni.cafe24.com/
+만26세 자동차보험\t\thttp://bohumpromotionk.cafe24.com/
+신규 자동차보험\t\thttps://bohumpromotionl.cafe24.com/
+자동차보험비교견적사이트\thttps://bohumpromotionm.cafe24.com/
+자동차 책임보험 가입\thttp://bohumpromotionn.cafe24.com/
+전기차보험료\t\thttp://bohumpromotiono.cafe24.com/
+자동차보험순위\t\thttps://bohumpromotionp.cafe24.com/
+20살자동차보험료\t\thttps://bohumpromotionq.cafe24.com/
+자동차보험 경력인정\thttps://bohumpromotionr.cafe24.com/
+자동차보험조회\t\thttps://bohumpromotions.cafe24.com/
+자동차보험종류\t\thttps://bohumpromotiont.cafe24.com/
+자차보험가입\t\thttp://directcarpromota.cafe24.com/
+자동차종합보험가격\thttp://directcarpromotb.cafe24.com/
+자동차보험 할부      \thttps://directcarpromotf.cafe24.com/
+자동차보험회사순위\thttp://directcarpromotg.cafe24.com/
+첫자동차보험료\t\thttp://directcarpromoti.cafe24.com/
+차 보험료\t\t\t      http://directcarpromotk.cafe24.com/
+자동차보험가격비교\thttp://directcarpromotl.cafe24.com/
+자동차보험 신규       \thttp://directcarpromotm.cafe24.com/
+인터넷자동차보험\t\thttp://directcarpromoto.cafe24.com/
+다이렉트자동차보험비교견적\t\thttp://m.directcarpromotq.cafe24.com/
+자동차보험가족한정범위\t\thttps://directcarpromots.cafe24.com/
+자동차보험조회\t\thttps://directcarpromotu.cafe24.com/
+자동차책임보험가격\t\thttps://directcarpromotv.cafe24.com/
+자동차보험 다이렉트 비교\t\thttps://directcarpromotw.cafe24.com/
+인터넷자동차보험료비교견적사이트\t\thttps://directcarpromotx.cafe24.com/
+20대자동차보험료\t\thttps://directcarpromotz.cafe24.com/
+수입차보험료\t\t\thttps://directupromotiona.withusdone.com/
+차량보험\t\t\t      https://directupromotionb.withusdone.com/
+자동차보험 경력인정\t\thttps://directupromotionc.withusdone.com/
+자동차누구나보험\t\thttps://directupromotiond.withusdone.com/
+자동차보험료계산기\t\thttps://directupromotione.withusdone.com/
+자동차보험특약\t\t\thttps://directupromotionf.withusdone.com/
+자동차보험비교견적\t\thttps://directupromotiong.withusdone.com/
+자동차보험부부한정\t\thttps://directupromotionh.withusdone.com/
+첫차보험료\t\t\thttps://directupromotioni.withusdone.com/
+차보험계산\t\t\thttps://directupromotionj.withusdone.com/
+자동차보험블랙박스할인\t\thttps://directupromotionk.withusdone.com/
+차량보험료\t\t\thttps://directupromotionl.withusdone.com/
+중고차보험\t\t\thttps://directupromotionm.withusdone.com/
+자동차보험자녀할인\t\thttps://directupromotionn.withusdone.com/
+자차보험료\t\t\thttps://directupromotiono.withusdone.com/
+중고차보험료\t\t\thttps://directupromotionp.withusdone.com/
+자동차보험 만기\t\thttps://directupromotionq.withusdone.com/
+다이렉트자동차보험추천\t\thttps://directupromotionr.withusdone.com/
+자동차보험비\t\t\thttps://directupromotions.withusdone.com/
+자동차보험료 할부\t\thttps://directupromotiont.withusdone.com/
+자동차보험료비교\t\thttps://directupromotionu.withusdone.com/
+자동차보험책임보험\t\thttps://directupromotionv.withusdone.com/
+자동차보험가입방법\t\thttps://directupromotionw.withusdone.com/
+실시간자동차보험견적\t\thttps://directupromotionx.withusdone.com/
+자동차보험 만나이\t\thttps://directupromotiony.withusdone.com/
+아반떼 보험료\t\t\thttps://directupromotionz.withusdone.com/
+카니발보험료\t\t\thttps://directxpromotiona.withusdone.com/
+경차자동차보험\t\t\thttps://directxpromotionb.withusdone.com/
+레이보험료\t\t\t\thttps://directxpromotionc.withusdone.com/
+중고차보험가입\t\t\thttps://directxpromotiond.withusdone.com/
+그랜저보험료\t\t\thttps://directxpromotione.withusdone.com/
+중고차자동차보험\t\t\thttps://directxpromotionf.withusdone.com/
+제네시스보험료\t\t\thttps://directxpromotiong.withusdone.com/
+중고차책임보험\t\t\thttps://directxpromotionh.withusdone.com/
+모닝보험료\t\t\t\thttps://directxpromotioni.withusdone.com/
+스포티지보험료\t\t\thttps://directxpromotionj.withusdone.com/
+K5보험료\t\t\t\thttps://directxpromotionk.withusdone.com/
+테슬라보험\t\t\t\thttps://directxpromotionl.withusdone.com/
+모닝자동차보험\t\t\thttps://directxpromotionm.withusdone.com/
+모닝자동차보험료\t\t\thttps://directxpromotionn.withusdone.com/
+테슬라보험료\t\t\t\thttps://directxpromotiono.withusdone.com/
+스파크보험료\t\t\t\thttps://directxpromotionp.withusdone.com/
+트위지보험료\t\t\t\thttps://directxpromotionq.withusdone.com/
+미니쿠퍼보험료\t\t\thttps://directxpromotionr.withusdone.com/
+G80보험료\t\t\t\thttps://directxpromotions.withusdone.com/
+푸조보험료\t\t\t자동차보험싼곳\thttps://directxpromotiont.withusdone.com/
+캠핑카자동차보험\t\t자동차보험싼곳\thttps://directxpromotionu.withusdone.com/
+K7보험료\t\t\t자동차보험싼곳\thttps://directxpromotionv.withusdone.com/
+포르쉐보험료\t\t\t자동차보험싼곳\thttps://directxpromotionw.withusdone.com/
+테슬라자동차보험\t\t자동차보험싼곳\thttps://directxpromotionx.withusdone.com/
+제네시스G80보험료\t\t자동차보험싼곳\thttps://directxpromotiony.withusdone.com/
+BMW보험료\t\t\t자동차보험싼곳\thttps://directxpromotionz.withusdone.com/
+캠핑카보험료\t\t\thttps://caropromotiona.withusdone.com/
+벤츠보험료\t\t\t\thttps://caropromotionb.withusdone.com/
+코나보험료\t\t\t\thttps://caropromotionc.withusdone.com/
+싼타페보험료\t\t\thttps://caropromotiond.withusdone.com/
+K3보험료\t\t\t\thttps://caropromotione.withusdone.com/
+코란도스포츠보험료\t\t\thttps://caropromotionf.withusdone.com/
+BMW5시리즈보험료\t\thttp://caropromotiong.withusdone.com/
+투싼보험료\t\t\t\thttps://caropromotionh.withusdone.com/
+카니발11인승보험료\t\thttps://caropromotioni.withusdone.com/
+QM3보험료\t\t\t\thttps://caropromotionj.withusdone.com/
+카마로보험료\t\t\t\thttps://caropromotionk.withusdone.com/
+티구안보험료\t\t\t\thttps://caropromotionl.withusdone.com/
+스포츠카보험료\t\t\thttps://caropromotionm.withusdone.com/
+G70보험료\t\t\t\thttps://caropromotionn.withusdone.com/
+아우디A6보험료\t\t\thttps://caropromotiono.withusdone.com/
+스파크자동차보험\t\t\thttps://caropromotionp.withusdone.com/
+K9보험료\t\t\t\thttps://caropromotionq.withusdone.com/
+테슬라모델3보험료\t\t\thttps://caropromotionr.withusdone.com/
+다마스보험료\t\t\t\thttps://caropromotions.withusdone.com/
+팰리세이드보험료\t\t\thttps://caropromotiont.withusdone.com/
+제네시스G70보험료\t\t\thttps://caropromotionu.withusdone.com/
+카니발자동차보험\t\t\thttps://caropromotionv.withusdone.com/
+X6보험료\t\t\t\thttps://caropromotionw.withusdone.com/
+쏘렌토보험료\t\t\t\thttps://caropromotionx.withusdone.com/
+스팅어보험료\t\t\t\thttps://caropromotiony.withusdone.com/
+아우디A3보험료\t\t\thttps://caropromotionz.withusdone.com/
+트래버스보험료\t\t\thttps://carmpromotiona.withusdone.com/
+픽업트럭보험료\t\t\thttps://carmpromotionb.withusdone.com/
+카니발9인승보험료\t\t\thttps://carmpromotionc.withusdone.com/
+펠리세이드보험료\t\t\thttps://carmpromotiond.withusdone.com/
+벤츠E클래스보험료\t\thttps://carmpromotione.withusdone.com/
+EV6보험료\t\t\t\thttps://carmpromotionf.withusdone.com/
+520D보험료\t\t\t\thttps://carmpromotiong.withusdone.com/
+넥쏘보험료\t\t\t\thttps://carmpromotionh.withusdone.com/
+스파크자동차보험료\t\t\thttps://carmpromotioni.withusdone.com/
+BMW보험\t\t\t\thttps://carmpromotionj.withusdone.com/
+폭스바겐 제타 보험료\t\thttps://carmpromotionk.withusdone.com/
+렉서스ES300H보험료\t\t\thttps://carmpromotionl.withusdone.com/
+X3보험료\t\t\t\thttps://carmpromotionm.withusdone.com/
+QM6보험료\t\t\t\thttps://carmpromotionn.withusdone.com/
+레이자동차보험료\t\t\thttps://carmpromotiono.withusdone.com/
+캐스퍼자동차보험\t\t\thttps://carmpromotionp.withusdone.com/
+토레스보험료\t\t\t\thttps://carmpromotionq.withusdone.com/
+BMW3시리즈보험료\t\t\thttps://carmpromotionr.withusdone.com/
+캐스퍼보험료\t\t\t\thttps://carmpromotions.withusdone.com/
+파나메라보험료\t\t\t타이틀생략 테스트\thttps://carmpromotiont.withusdone.com/
+티볼리보험료\t\t\t타이틀생략 테스트\thttps://carmpromotionu.withusdone.com/
+쏘나타보험료\t\t\t타이틀생략 테스트\thttp://carmpromotionv.withusdone.com/
+머스탱보험료\t\t\t\thttps://carmpromotionw.withusdone.com/
+렉스턴스포츠 칸 보험료\t\t\thttps://carmpromotionx.withusdone.com/
+스포티지하이브리드보험료\t\t\thttps://carmpromotiony.withusdone.com/
+제네시스GV80보험료\t\t\thttps://carmpromotionz.withusdone.com/
+K8 하이브리드 보험료\t\t\thttps://carvpromotiona.withusdone.com/
+하이브리드보험료\t\t\thttps://carvpromotionb.withusdone.com/
+아이오닉6보험료\t\t\thttps://carvpromotionc.withusdone.com/
+GV70보험료\t\t\t\thttps://carvpromotiond.withusdone.com/
+쏘렌토하이브리드보험료\t\t\thttps://carvpromotione.withusdone.com/
+셀토스보험료\t\t\t\thttps://carvpromotionf.withusdone.com/
+Z4보험료\t\t\t\thttps://carvpromotiong.withusdone.com/
+벤츠자동차보험\t\t\thttps://carvpromotionh.withusdone.com/
+GV80보험료\t\t\t\thttps://carvpromotioni.withusdone.com/
+벨로스터 N 보험료\t\t\thttps://carvpromotionj.withusdone.com/
+X5보험료\t\t\t\thttps://carvpromotionk.withusdone.com/
+콜로라도보험료\t\t\thttps://carvpromotionl.withusdone.com/
+렉서스보험료\t\t\t\thttps://carvpromotionm.withusdone.com/
+아이오닉5보험료\t\t\thttps://carvpromotionn.withusdone.com/
+화물차보험료\t\t\t\thttps://carvpromotiono.withusdone.com/
+새차보험\t\t\t\thttps://carvpromotionp.withusdone.com/
+만26세 자동차보험\t\t\thttps://directcarunmea.withusdone.com/
+운전병보험할인\t\t\thttps://directcarunmeb.withusdone.com/
+만21세 자동차보험\t\t\thttps://directcarunmec.withusdone.com/
+만19세 자동차보험\t\t\thttps://directcarunmed.withusdone.com/
+20대자동차보험\t\t\thttps://directcarunmee.withusdone.com/
+20살자동차보험료\t\t\thttps://directcarunmef.withusdone.com/
+만24세자동차보험\t\t\thttps://directcarunmeg.withusdone.com/
+만20세자동차보험\t\t\thttps://directcarunmeh.withusdone.com/
+신차보험가입\t\t\thttps://directcarunmei.withusdone.com/
+만25세 자동차보험\t\t\thttps://directcarunmej.withusdone.com/
+만23세자동차보험\t\t\thttps://directcarunmek.withusdone.com/
+20대차보험료\t\t\t\thttps://directcarunmel.withusdone.com/
+신차자동차보험료\t\t\thttps://directcarunmem.withusdone.com/
+자동차보험 연령\t\t\thttps://directcarunmen.withusdone.com/
+만22세자동차보험\t\t\thttps://directcarunmeo.withusdone.com/
+만18세자동차보험\t\t\thttps://directcarunmep.withusdone.com/
+20살차보험료\t\t\t\thttps://directcarunmeq.withusdone.com/
+30대자동차보험료\t\t\thttps://directcarunmer.withusdone.com/
+21살자동차보험\t\t\thttps://directcarunmes.withusdone.com/
+20살자동차보험\t\t\thttps://directcarunmet.withusdone.com/
+22살자동차보험\t\t\thttps://directcarunmeu.withusdone.com/
+22살자동차보험료\t\t\thttps://directcarunmev.withusdone.com/
+24살자동차보험\t\t\thttps://directcarunmew.withusdone.com/
+40대자동차보험료\t\t\thttps://directcarunmex.withusdone.com/
+23살자동차보험\t\t\thttps://directcarunmey.withusdone.com/
+만28세자동차보험\t\t\thttps://directcarunmez.withusdone.com/
+20대초반자동차보험\t\t\thttps://directcarunma.withusdone.com/
+20대초반자동차보험료\t\t\thttps://directcarunmb.withusdone.com/
+만30세자동차보험\t\t\thttps://directcarunmc.withusdone.com/
+만28세자동차보험료\t\t\thttps://directcarunmd.withusdone.com/
+자동차보험료1년\t\t\thttps://directcarunmf.withusdone.com/
+수입차보험료\t\t\thttps://directupromotiona.withusdone.com/
+차량보험\t\t\t\thttps://directupromotionb.withusdone.com/
+자동차보험 경력인정\t\t\thttps://directupromotionc.withusdone.com/
+자동차누구나보험\t\t\thttps://directupromotiond.withusdone.com/
+자동차보험료계산기\t\t\thttps://directupromotione.withusdone.com/
+자동차보험특약\t\t\thttps://directupromotionf.withusdone.com/
+자동차보험비교견적\t\t\thttps://directupromotiong.withusdone.com/
+자동차보험부부한정\t\t\thttps://directupromotionh.withusdone.com/
+첫차보험료\t\t\t\thttps://directupromotioni.withusdone.com/
+차보험계산\t\t\t\thttps://directupromotionj.withusdone.com/
+자동차보험블랙박스할인\t\t\thttps://directupromotionk.withusdone.com/
+차량보험료\t\t\t\thttps://directupromotionl.withusdone.com/
+중고차보험\t\t\t\thttps://directupromotionm.withusdone.com/
+자동차보험자녀할인\t\t\thttps://directupromotionn.withusdone.com/
+자차보험료\t\t\t\thttps://directupromotiono.withusdone.com/
+중고차보험료\t\t\t\thttps://directupromotionp.withusdone.com/
+자동차보험 만기\t\t\thttps://directupromotionq.withusdone.com/
+다이렉트자동차보험추천\t\t\thttps://directupromotionr.withusdone.com/
+자동차보험비\t\t\t\thttps://directupromotions.withusdone.com/
+자동차보험료 할부\t\t\thttps://directupromotiont.withusdone.com/
+자동차보험료비교\t\t\thttps://directupromotionu.withusdone.com/
+자동차보험책임보험\t\t\thttps://directupromotionv.withusdone.com/
+자동차보험가입방법\t\t\thttps://directupromotionw.withusdone.com/
+실시간자동차보험견적\t\t\thttps://directupromotionx.withusdone.com/
+자동차보험 만나이\t\t\thttps://directupromotiony.withusdone.com/
+아반떼 보험료\t\t\thttps://directupromotionz.withusdone.com/
+자동차보험료비교견적사이트\t\t\thttps://directapmoa.withusdone.com/
+자동차보험비교\t\t\thttps://directapmob.withusdone.com/
+자동차보험료비교견적\t\t\thttps://directapmoc.withusdone.com/
+자동차다이렉트보험\t\t\thttps://directapmod.withusdone.com/
+자동차보험다이렉트\t\t\thttps://directapmoe.withusdone.com/
+자동차다이렉트비교견적 추천 사이트\t\t\thttps://directapmof.withusdone.com/
+자동차보험료계산\t\t\thttps://directapmog.withusdone.com/
+다이렉트자동차보험비교\t\t\thttps://directapmoh.withusdone.com/
+자동차보험할증기준\t\t\thttps://directapmoi.withusdone.com/
+자동차책임보험\t\t\thttps://directapmoj.withusdone.com/
+자동차보험료1년\t\t\thttps://directapmok.withusdone.com/
+자동차보험조회\t\t\thttps://directapmol.withusdone.com/
+자동차보험할증\t\t\thttps://directapmom.withusdone.com/
+다이렉트자동차보험비교견적사이트\t\t\thttps://directapmon.withusdone.com/
+자동차보험비교견적\t\t\thttps://directapmoo.withusdone.com/
+다이렉트자동차보험료비교견적사이트\t\t\thttps://directapmop.withusdone.com/
+자동차보험료비교\t\t\thttps://directapmoq.withusdone.com/
+자동차보험료계산기\t\t\thttps://directapmor.withusdone.com/
+자동차보험동일증권\t\t\thttps://directapmos.withusdone.com/
+다이렉트자동차보험비교견적\t\t\thttps://directapmot.withusdone.com/
+자동차보험비교견적사이트\t\t\thttps://directapmou.withusdone.com/
+자동차종합보험\t\t\thttps://directapmov.withusdone.com/
+내자동차보험조회\t\t\thttps://directapmow.withusdone.com/
+자동차보험종류\t\t\thttps://directapmox.withusdone.com/
+자동차보험료할증\t\t\thttps://directapmoy.withusdone.com/
+자동차다이렉트보험비교\t\t\thttps://directapmoz.withusdone.com/
+자동차보험다이렉트비교\t\t\thttps://directbpmoa.withusdone.com/
+자동차보험확인\t\t\thttps://directbpmob.withusdone.com/
+차보험료\t\t\t\thttps://directbpmoc.withusdone.com/
+20대자동차보험료\t\t\thttps://directbpmod.withusdone.com/
+자동차보험미가입과태료\t\thttps://directbpmoe.withusdone.com/
+자동차보험견적\t\t\thttps://directbpmof.withusdone.com/
+차보험\t\t\t\thttps://directbpmog.withusdone.com/
+자동차보험갱신\t\t\thttps://directbpmoh.withusdone.com/
+자동차보험추천\t\t\thttps://directbpmoi.withusdone.com/
+자동차보험나이\t\t\thttps://directbpmoj.withusdone.com/
+자동차보험비교사이트\t\t\thttps://directbpmok.withusdone.com/
+자동차보험이력조회\t\t\thttps://directbpmol.withusdone.com/
+자동차보험가족한정범위\t\t\thttps://directbpmom.withusdone.com/
+자동차보험자기부담금\t\t\thttps://directbpmon.withusdone.com/
+자동차보험경력인정\t\t\thttps://directbpmoo.withusdone.com/
+자동차의무보험\t\t\thttps://directbpmop.withusdone.com/
+자동차보험가입\t\t\thttps://directbpmoq.withusdone.com/
+다이렉트자동차보험료\t\t\thttps://directbpmor.withusdone.com/
+자동차상해특약\t\t\thttps://directbpmos.withusdone.com/
+자동차보험료조회\t\t\thttps://directbpmot.withusdone.com/
+다이렉트자동차보험비교사이트\t\t\thttps://directbpmou.withusdone.com/
+경차보험료\t\t\t\thttps://directbpmov.withusdone.com/
+자동차다이렉트보험비교견적사이트\t\t\thttps://directbpmow.withusdone.com/
+자동차보험대물배상\t\t\thttps://directbpmox.withusdone.com/
+자동차보험자차\t\t\thttps://directbpmoy.withusdone.com/
+자차보험할증\t\t\thttps://directbpmoz.withusdone.com/
+자동차보험할부\t\t\thttps://directcpmoa.withusdone.com/
+외제차보험료\t\t\thttps://directcpmob.withusdone.com/
+자동차보험료인상\t\t\thttps://directcpmoc.withusdone.com/
+외제차보험\t\t\t\thttps://directcpmod.withusdone.com/
+자동차보험승계\t\t\thttps://directcpmoe.withusdone.com/
+자동차보험할인할증등급\t\thttps://directcpmof.withusdone.com/
+자동차보험갱신기간\t\t\thttps://directcpmog.withusdone.com/
+자동차보험등급\t\t\thttps://directcpmoh.withusdone.com/
+자동차보험만기\t\t\thttps://directcpmoi.withusdone.com/
+자동차보험만기일\t\t\thttps://directcpmoj.withusdone.com/
+자동차공동명의보험\t\t\thttps://directcpmok.withusdone.com/
+다이렉트자동차보험료비교견적\t\t\thttps://directcpmol.withusdone.com/
+자동차보험 신규\t\t\thttps://directcpmom.withusdone.com/
+다이렉트차보험비교\t\t\thttps://directcpmon.withusdone.com/
+자동차보험가입조회\t\t\thttps://directcpmoo.withusdone.com/
+자동차보험계산\t\t\thttps://directcpmop.withusdone.com/
+자동차책임보험가입\t\t\thttps://directcpmoq.withusdone.com/
+내차보험조회\t\t\thttps://directcpmor.withusdone.com/
+다이렉트자동차보험료비교\t\t\thttps://directcpmos.withusdone.com/
+내가가입한자동차보험조회\t\t\thttps://directcpmot.withusdone.com/
+자동차책임보험가격\t\t\thttps://directcpmou.withusdone.com/
+자차보험자기부담금\t\t\thttps://directcpmov.withusdone.com/
+자동차보험사\t\t\t\thttps://directcpmow.withusdone.com/
+자동차보험변경\t\t\thttps://directcpmox.withusdone.com/
+자동차보험회사\t\t\thttps://directcpmoy.withusdone.com/
+자동차누구나보험\t\t\thttps://directcpmoz.withusdone.com/
+자동차보험부모님\t\t\thttps://directdpmoa.withusdone.com/
+자동차보험지정1인\t\t\thttps://directdpmob.withusdone.com/
+자동차보험자상\t\t\thttps://directdpmoc.withusdone.com/
+전기차보험료비교\t\t\thttps://directdpmod.withusdone.com/
+자동차상해보험\t\t\thttps://directdpmoe.withusdone.com/
+차량보험료\t\t\t\thttps://directdpmof.withusdone.com/
+자동차보험가입경력\t\t\thttps://directdpmog.withusdone.com/
+자동차보험견적비교사이트\t\t\thttps://directdpmoh.withusdone.com/
+자동차보험순위\t\t\thttps://directdpmoi.withusdone.com/
+자동차가족보험\t\t\thttps://directdpmoj.withusdone.com/
+다이렉트자동차보험견적\t\t\thttps://directdpmok.withusdone.com/
+자동차보험인상\t\t\thttps://directdpmol.withusdone.com/
+첫차보험료\t\t\t\thttps://directdpmom.withusdone.com/
+자동차보험사고할증\t\t\thttps://directdpmon.withusdone.com/
+자동차보험자동차상해\t\t\thttps://directdpmoo.withusdone.com/
+차량보험가입조회\t\t\thttps://directdpmop.withusdone.com/
+자동차보험싼곳\t\t\thttps://directdpmoq.withusdone.com/
+법인자동차보험\t\t\thttps://directdpmor.withusdone.com/
+자동차보험이전\t\t\thttps://directdpmos.withusdone.com/
+차량보험조회\t\t\thttps://directdpmot.withusdone.com/
+자동차보험저렴한곳\t\t\thttps://directdpmou.withusdone.com/
+자동차보험인터넷\t\t\thttps://directdpmov.withusdone.com/
+자동차보험벌금\t\t\thttps://directdpmow.withusdone.com/
+자동차보험할증조회\t\t\thttps://directdpmox.withusdone.com/
+자동차보험차량변경\t\t\thttps://directdpmoy.withusdone.com/
+자차보험뜻\t\t\t\thttps://directdpmoz.withusdone.com/
+타는만큼내는보험\t\t\thttps://directepmoa.withusdone.com/
+자동차보험가격\t\t\thttps://directepmob.withusdone.com/
+자동차자차보험\t\t\thttps://directepmoc.withusdone.com/
+자동차보험다이렉트견적\t\t\thttps://directepmod.withusdone.com/
+자동차명의이전보험\t\t\thttps://directepmoe.withusdone.com/
+저렴한자동차보험\t\t\thttps://directepmof.withusdone.com/
+자동차보험안들면\t\t\thttps://directepmog.withusdone.com/
+자동차책임보험한도\t\t\thttps://directepmoh.withusdone.com/
+자동차2대보험\t\t\thttps://directepmoi.withusdone.com/
+자동차 보험 인상률\t\t\thttps://directepmoj.withusdone.com/
+중고차보험\t\t\t\thttps://directepmok.withusdone.com/
+신차보험가입\t\t\thttps://directepmol.withusdone.com/
+내자동차보험찾기\t\t\thttps://directepmom.withusdone.com/
+자동차보험미가입\t\t\thttps://directepmon.withusdone.com/
+자동차보험혜택\t\t\thttps://directepmoo.withusdone.com/
+자차보험이란\t\t\thttps://directepmop.withusdone.com/
+자동차보험누구나\t\t\thttps://directepmoq.withusdone.com/
+자동차보험할인등급\t\t\thttps://directepmor.withusdone.com/
+자동차보험료할인\t\t\thttps://directepmos.withusdone.com/
+자동차보험차량가액\t\t\thttps://directepmot.withusdone.com/
+자동차보험대물\t\t\thttps://directepmou.withusdone.com/
+자동차보험일년\t\t\thttps://directepmov.withusdone.com/
+자동차보험명의변경\t\t\thttps://directepmow.withusdone.com/
+자동차보험책임보험\t\t\thttps://directepmox.withusdone.com/
+자동차보험가입확인\t\t\thttps://directepmoy.withusdone.com/
+자동차보험추가\t\t\thttps://directepmoz.withusdone.com/
+자동차보험질권설정\t\t\thttps://directfpmoa.withusdone.com/
+다이렉트자동차보험사이트\t\t\thttps://directfpmob.withusdone.com/
+자동차보험1인추가\t\t\thttps://directfpmoc.withusdone.com/
+자동차보험1년가격\t\t\thttps://directfpmod.withusdone.com/
+자동차보험비\t\t\t\thttps://directfpmoe.withusdone.com/
+자동차보험등급조회\t\t\thttps://directfpmof.withusdone.com/
+자동차보험주말가입\t\t\thttps://directfpmog.withusdone.com/
+세닉 E-Tech 보험료\t\t\thttps://directfpmoh.withusdone.com/
+자동차보험피보험자\t\t\thttps://directfpmoi.withusdone.com/
+자동차보험가족추가\t\t\thttps://directfpmoj.withusdone.com/
+자동차보험운전경력\t\t\thttps://directfpmok.withusdone.com/
+신차자동차보험\t\t\thttps://directfpmol.withusdone.com/
+자동차보험찾기\t\t\thttps://directfpmom.withusdone.com/
+차보험계산\t\t\t\thttps://directfpmon.withusdone.com/
+자동차보험무이자할부\t\t\thttps://directfpmoo.withusdone.com/
+자동차보험할증등급\t\t\thttps://directfpmop.withusdone.com/
+자동차보험분할납부\t\t\thttps://directfpmoq.withusdone.com/
+차보험료계산\t\t\thttps://directfpmor.withusdone.com/
+자차할증\t\t\t\thttps://directfpmos.withusdone.com/
+자동차보험명의\t\t\thttps://directfpmot.withusdone.com/
+자동차보험대인배상2\t\t\thttps://directfpmo u.withusdone.com/
+신차보험\t\t\t\thttps://directfpmov.withusdone.com/
+중고차자동차보험가입\t\t\thttps://directfpmow.withusdone.com/
+차량보험이력조회\t\t\thttps://directfpmox.withusdone.com/
+자동차보험카드결제\t\t\thttps://directfpmoy.withusdone.com/
+자동차보험분납\t\t\thttps://directfpmoz.withusdone.com/
+자동차보험계산기\t\t\thttps://directgpmoa.withusdone.com/
+다이렉트차보험료\t\t\thttps://directgpmob.withusdone.com/
+자동차보험료견적비교\t\t\thttps://directgpmoc.withusdone.com/
+자동차보험연령\t\t\thttps://directgpmod.withusdone.com/
+자동차보험자기신체사고\t\t\thttps://directgpmoe.withusdone.com/
+자동차보험자손\t\t\thttps://directgpmof.withusdone.com/
+자동차보험책임보험만\t\t\thttps://directgpmog.withusdone.com/
+자동차보험기간\t\t\thttps://directgpmoh.withusdone.com/
+자동차보험가격비교\t\t\thttps://directgpmoi.withusdone.com/
+자동차보험자기차량손해\t\t\thttps://directgpmoj.withusdone.com/
+인터넷자동차보험비교견적\t\t\thttps://directgpmok.withusdone.com/
+자동차종합보험가격\t\t\thttps://directgpmol.withusdone.com/
+개인사업자자동차보험\t\t\thttps://directgpmom.withusdone.com/
+자동차보험환입\t\t\thttps://directgpmon.withusdone.com/
+화물차보험\t\t\t\thttps://directgpmoo.withusdone.com/
+중고차보험료\t\t\thttps://directgpmop.withusdone.com/
+차보험나이\t\t\t\thttps://directgpmoq.withusdone.com/
+내자동차보험\t\t\thttps://directgpmor.withusdone.com/
+다이렉트자동차보험추천\t\t\thttps://directgpmos.withusdone.com/
+자동차보험회사종류\t\t\thttps://directgpmot.withusdone.com/
+자차보험료\t\t\t\thttps://directgpmou.withusdone.com/
+자동차보험요율\t\t\thttps://directgpmov.withusdone.com/
+자동차보험카드혜택\t\t\thttps://directgpmow.withusdone.com/
+자동차보험수가\t\t\thttps://directgpmox.withusdone.com/
+자동차보험료견적\t\t\thttps://directgpmoy.withusdone.com/
+벤츠보험료\t\t\t\thttps://directgpmoz.withusdone.com/
+무면허자동차보험\t\t\thttps://directhpmoa.withusdone.com/
+공동명의자동차보험\t\t\thttps://directhpmob.withusdone.com/
+부모님차보험\t\t\t\thttps://directhpmoc.withusdone.com/
+자동차보험필수\t\t\thttps://directhpmod.withusdone.com/
+다이렉트자동차보험견적비교\t\t\thttps://directhpmoe.withusdone.com/
+30대자동차보험료 평균 얼마 무료 실시간 조회\t\t\thttps://directhpmof.withusdone.com/
+자동차보험의무\t\t\thttps://directhpmog.withusdone.com/
+자동차보험2대\t\t\thttps://directhpmoh.withusdone.com/
+자동차보험회사순위\t\t\thttps://directhpmoi.withusdone.com/
+자동차보험사확인\t\t\thttps://directhpmoj.withusdone.com/
+자동차보험납부\t\t\thttps://directhpmok.withusdone.com/
+중고차자동차보험\t\t\thttps://directhpmol.withusdone.com/
+자기차량손해보험\t\t\thttps://directdpmom.withusdone.com/
+부부자동차보험\t\t\thttps://directhpmon.withusdone.com/
+자동차보험가입기간\t\t\thttps://directhpmoo.withusdone.com/
+경차자동차보험\t\t\thttps://directhpmop.withusdone.com/
+내차보험료\t\t\t\thttps://directhpmoq.withusdone.com/
+자동차보험설계사\t\t\thttps://directhpmor.withusdone.com/
+자동차보험갈아타기\t\t\thttps://directhpmos.withusdone.com/
+자동차보험금\t\t\t\thttps://directhpmot.withusdone.com/
+자동차보험부부\t\t\thttps://directhpmou.withusdone.com/
+자동차보험할인카드\t\t\thttps://directhpmov.withusdone.com/
+자동차보험료분납\t\t\thttps://directhpmow.withusdone.com/
+장애인자동차보험\t\t\thttps://directhpmox.withusdone.com/
+화물차보험료\t\t\thttps://directhpmoy.withusdone.com/
+자동차보험료납부\t\t\thttps://directhpmoz.withusdone.com/
+자동차보험월납\t\t\thttps://directipmoa.withusdone.com/
+자동차 보험 인상률 계산기\t\t\thttps://directipmob.withusdone.com/
+테슬라보험료\t\t\thttps://directipmoc.withusdone.com/
+자동차보험재가입\t\t\thttps://directipmod.withusdone.com/
+제네시스G80보험료\t\t\thttps://directipmoe.withusdone.com/
+자동차보험장애인\t\t\thttps://directipmof.withusdone.com/
+자동차보험신용카드\t\t\thttps://directipmog.withusdone.com/
+자동차보험료확인\t\t\thttps://directipmoh.withusdone.com/
+자동차손해보험\t\t\thttps://directipmoi.withusdone.com/
+다이렉트자동차보험저렴한곳\t\t\thttps://directipmoj.withusdone.com/
+자동차보험중복가입\t\t\thttps://directipmok.withusdone.com/
+자동차보험키로수\t\t\thttps://directipmol.withusdone.com/
+자차보험가입\t\t\thttps://directipmom.withusdone.com/
+자동차보험증명서\t\t\thttps://directipmon.withusdone.com/
+자동차보험6개월\t\t\thttps://directipmoo.withusdone.com/
+자동차보험1년\t\t\thttps://directipmop.withusdone.com/
+자동차보험견적비교\t\t\thttps://directipmoq.withusdone.com/
+자동차보험타는만큼\t\t\thttps://directipmor.withusdone.com/
+자동차보험카드할부\t\t\thttps://directipmos.withusdone.com/
+캠핑카보험\t\t\t\thttps://directipmot.withusdone.com/
+캠핑카보험료\t\t\thttps://directipmou.withusdone.com/
+자동차보험금액\t\t\thttps://directipmov.withusdone.com/
+자동차보험비용\t\t\thttps://directipmow.withusdone.com/
+차보험조회\t\t\t\thttps://directipmox.withusdone.com/
+차보험비교사이트\t\t\thttps://directipmoy.withusdone.com/
+자동차보험사추천\t\t\thttps://directipmoz.withusdone.com/`;
+
+/* 파싱: 각 줄에서 마지막 토큰을 URL로, 앞부분을 키워드로 처리 */
+function parseRaw(text){
+  const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  const items = [];
+  for(const line of lines){
+    // 마지막 공백 이후가 URL
+    const parts = line.split(/\s+/);
+    if(parts.length<2) continue;
+    const url = parts[parts.length-1];
+    const keyword = parts.slice(0,parts.length-1).join(' ');
+    items.push({keyword,url});
+  }
+  return items;
+}
+
+/* 무작위 섞기 */
+function shuffle(array){
+  for(let i=array.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [array[i],array[j]] = [array[j],array[i]];
+  }
+  return array;
+}
+
+/* 클릭 유도 강렬 타이틀 생성기 */
+function makeTitle(keyword){
+  // 핵심 키워드 강조형 문구
+  const templates = [
+    `지금 확인하면 보험료가 달라진다 — ${keyword}`,
+    `단 1분이면 끝내는 핵심: ${keyword}`,
+    `당신의 다음 보험료를 깨부수는 팁: ${keyword}`,
+    `비밀 데이터로 본 결론 — ${keyword}`,
+    `숨겨진 할인 루트 공개: ${keyword}`
+  ];
+  // 랜덤 템플릿 선택
+  return templates[Math.floor(Math.random()*templates.length)];
+}
+
+/* 상세 설명(문장 전체를 링크로 만든다) */
+function makeDesc(keyword,url){
+  // 상세하지만 간결한 설명문 생성
+  const sentences = [
+    `${keyword} 관련 핵심 정보와 실시간 비교 서비스를 한눈에 확인하세요. 상세한 요금 산출과 절약 팁을 바로 확인하려면 여기를 누르세요.`,
+    `${keyword} 전용 가이드와 실제 사례 기반 설명을 제공합니다. 지금 클릭하면 가입 전 반드시 알아야 할 조건을 즉시 확인할 수 있습니다.`,
+    `${keyword}의 최신 요율, 특약, 할인 항목을 모아놓았습니다. 빠르게 견적 비교하고 최적의 조건을 찾으려면 이 링크를 열어보세요.`,
+    `${keyword}에 숨겨진 비용 구조와 절감 포인트를 분석했습니다. 가입 전 체크리스트와 함께 바로 확인하려면 클릭하세요.`,
+    `${keyword}에 대해 보험사가 알려주지 않는 중요한 사실들을 정리했습니다. 바로 확인하고 선택의 기준을 세우세요.`
+  ];
+  const sentence = sentences[Math.floor(Math.random()*sentences.length)];
+  // 문장 전체를 앵커로 반환
+  return `<a href="${url}" target="_blank" rel="noopener">${sentence}</a>`;
+}
+
+/* 렌더링 */
+function render(){
+  const container = document.getElementById('container');
+  const items = parseRaw(rawData);
+  shuffle(items);
+  for(const it of items){
+    const card = document.createElement('article');
+    card.className = 'card';
+    const title = document.createElement('div');
+    title.className = 'title';
+    title.textContent = makeTitle(it.keyword);
+    const desc = document.createElement('div');
+    desc.className = 'desc';
+    desc.innerHTML = makeDesc(it.keyword,it.url);
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = `키워드: ${it.keyword} · URL: ${it.url}`;
+    card.appendChild(title);
+    card.appendChild(desc);
+    card.appendChild(meta);
+    container.appendChild(card);
+  }
+}
+
+document.addEventListener('DOMContentLoaded',render);
+</script>
+</body>
+</html>
